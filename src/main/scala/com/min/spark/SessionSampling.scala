@@ -21,8 +21,8 @@ object SessionSampling {
       UserVisitAction(infos(0).split(" ")(0), infos(1), infos(2), infos(3), dateFormat.parse(infos(0)),
         if (infos(4).equals("搜索")) infos(7) else "",
         if (infos(4).equals("查看")) infos(5) else "", if (infos(4).equals("查看")) infos(6) else "",
-        if (infos(4).equals("支付")) infos(5) else "", if (infos(4).equals("支付")) infos(6) else "",
-        if (infos(4).equals("下单")) infos(5) else "", if (infos(4).equals("下单")) infos(6) else ""
+        if (infos(4).equals("下单")) infos(5) else "", if (infos(4).equals("下单")) infos(6) else "",
+        if (infos(4).equals("支付")) infos(5) else "", if (infos(4).equals("支付")) infos(6) else ""
       )
     })
     val startTime = dateFormat.parse("2017-9-19 0:0:0").getTime

@@ -13,7 +13,6 @@ import scala.collection.mutable.ListBuffer
  */
 object SessionFilter {
   def main(args: Array[String]): Unit = {
-    val ageFilter = Array[String]("10", "50")
     val conn = MockMysql.getConnection()
     val sql = "select user_id from user_info where age >= 30 and age <= 50"
     val result = conn.createStatement().executeQuery(sql)

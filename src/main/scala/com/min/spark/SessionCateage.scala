@@ -18,11 +18,16 @@ object SessionCateage {
       UserVisitAction(infos(0).split(" ")(0), infos(1), infos(2), infos(3), dateFormat.parse(infos(0)),
         if (infos(4).equals("搜索")) infos(7) else "",
         if (infos(4).equals("查看")) infos(5) else "", if (infos(4).equals("查看")) infos(6) else "",
-        if (infos(4).equals("支付")) infos(5) else "", if (infos(4).equals("支付")) infos(6) else "",
-        if (infos(4).equals("下单")) infos(5) else "", if (infos(4).equals("下单")) infos(6) else ""
+        if (infos(4).equals("下单")) infos(5) else "", if (infos(4).equals("下单")) infos(6) else "",
+        if (infos(4).equals("支付")) infos(5) else "", if (infos(4).equals("支付")) infos(6) else ""
       )
     })
-    val result = sessionRdd.map(x => (x.clickCateageId, x.sessionId)).filter(f => f._1 != "").map(v => ((v._1, v._2), 1)).reduceByKey(_ + _)
-    result.sortBy(f => f._2, false).foreach(println)
+    val result4 = sessionRdd.map(f => (f.clickCateageId, f.sessionId)).filter(_._1 != "")
+      .map(x => (x._1, 1)).reduceByKey(_ + _).sortBy(f => f._2, false)
+    //result4.take(10).foreach(println)
+
+    val result5 = sessionRdd.map(f => (f.clickCateageId, f.sessionId)).filter(_._1 != "")
+      .map(x => (x, 1)).reduceByKey(_ + _).sortBy(v => v._2,false)
+     result5.take(10).foreach(println)
   }
 }
